@@ -34,3 +34,64 @@ $ git flow feature start 01_rubocop_and_rspec
   ```
   $ bundle exec rubocop --auto-gen-config
   ```
+
+  - .rubocop.ymlへの記述
+  ```
+  inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+# This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+Rails:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 25
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  ```
+
+- Gemfileに追加
+  ```
+  # Gemfile
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  ```
+
+- rspecのインストール
+```
+$ rails g rspec:install
+    create  .rspec
+    create  spec
+    create  spec/spec_helper.rb
+    create  spec/rails_helper.rb
+```
+
