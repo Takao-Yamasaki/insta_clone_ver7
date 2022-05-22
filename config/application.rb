@@ -18,7 +18,7 @@ module InstaCloneV7
     #
 
     # ヘルパーが生成されないように設定
-    config,generators do |g|
+    config.generators do |g|
       g.helper false
     end
 
