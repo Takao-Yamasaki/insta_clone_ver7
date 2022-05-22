@@ -95,3 +95,49 @@ $ rails g rspec:install
     create  spec/rails_helper.rb
 ```
 
+- コントローラーの作成
+```
+$ rails g controller health_checks
+$ rails g controller samples
+```
+- コントローラーの記述
+```
+  def show
+    head :ok
+  end
+```
+```
+  def index; end
+```
+- ルーティングの設定
+```
+Rails.application.routes.draw do
+  get '/health_check' do: 'health_checks#show'
+  root to: "samples#index"
+end
+```
+
+- 'spec/rails_helper.rb'のコメントアウトを解除
+```
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+```
+
+- capybara.rbの作成
+```
+mkdir spec/support
+touch spec/support/capybara.rb
+```
+
+- capybara.rbをコピペ
+
+- システムスペックを使う
+```
+$ rails g rspec:system samples
+```
+```
+
+```
+
+- 参考
+- [RSpec+capybara+selenium+chromedriverでブラウザ自動テスト！！](https://qiita.com/nakanishi03/items/c7dbb3c9528483f9a0a1)
+
