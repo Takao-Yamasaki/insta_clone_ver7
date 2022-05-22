@@ -135,7 +135,18 @@ touch spec/support/capybara.rb
 $ rails g rspec:system samples
 ```
 ```
-
+RSpec.describe('Samples', type: :system) do
+  describe 'Capybaraの疎通確認用' do
+    it 'ページが開ける' do
+      visit '/'
+      expect(page).to have_content 'テストです'
+    end
+  end
+end
+```
+- GitHubにプッシュする
+```
+$ git flow feature publish 01_rubocop_and_rspec
 ```
 
 - 参考
