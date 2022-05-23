@@ -172,4 +172,14 @@ end
 ```
 
 - Gemの追加
+```
+# 認証機能
+gem 'sorcery'
+```
 
+- `bundle install`した後、以下のジェネレータを実行
+```
+$ rails g sorcery:install
+```
+
+- 
