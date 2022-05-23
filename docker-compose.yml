@@ -4,18 +4,18 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/insta_clone:cashed
+      - .:/insta_clone:cached
       - bundle:/usr/local/bundle
     ports:
       - 3000:3000
     depends_on:
       - db
-      stbin_open: true
-      tty: true
+    stdin_open: true
+    tty: true
   db:
     image: mysql:5.7.33
     environment:
-      - MYSQL_ROOT_PASSWORD: "mysql"
+      MYSQL_ROOT_PASSWORD: "mysql"
     ports:
       - 3306:3306
     volumes:
