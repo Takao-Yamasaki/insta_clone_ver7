@@ -25,6 +25,10 @@ module InstaCloneV7
     # タイムゾーンの設定
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    
+    # バリデーションエラーの表示を調整
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+
     # デフォルトの言語を日本語に設定
     config.i18n.default_locale = :ja
     # config.eager_load_paths << Rails.root.join("extras")
