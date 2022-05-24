@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-5 col-md-8">
-        <%= form_with model: @user, url: signup_path, class: 'bg-white rounded-5 shadow-5-strong p-5' do |f|%>
+        <%= form_with model: @user, url: signup_path, class: 'bg-white rounded-5 shadow-5-strong p-5' do |f| %>
           <%= render 'shared/error_messages', object: @user %>
           <div class="form-outline mb-4">
             <%= f.email_field :email, class: 'form-control' %>
-            <%= f.label :email, class: 'form-label'%>
+            <%= f.label :email, class: 'form-label' %>
           </div>
           <div class="form-outline mb-4">
             <%= f.text_field :username, class: 'form-control' %>
@@ -14,11 +14,11 @@
           </div>
           <div class="form-outline mb-4">
             <%= f.password_field :password, class: 'form-control' %>
-            <%= f.label :passeord, class: 'form-control' %>
+            <%= f.label :password, class: 'form-label' %>
           </div>
           <div class="form-outline mb-4">
             <%= f.password_field :password_confirmation, class: 'form-control' %>
-            <%= f.label :password_confirmation, class: 'form-label'%>
+            <%= f.label :password_confirmation, class: 'form-label' %>
           </div>
           <%= f.submit class: 'btn btn-primary btn-block' %>
         <% end %>
