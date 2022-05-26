@@ -1,5 +1,7 @@
 ---
 EnableDefaultLinters: true
+exclude:
+  - '**/vender/**/*'
 linters:
   ErbSafety:
     enabled: true
