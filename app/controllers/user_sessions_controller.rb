@@ -14,6 +14,6 @@ class UserSessionsController < ApplicationController
 
   def destory
     logout
-    redirect_to login_path, success: 'ログアウトしました'
+    redirect_to login_path, success: 'ログアウトしました', status: :see_other
   end
 end
