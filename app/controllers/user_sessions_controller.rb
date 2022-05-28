@@ -1,9 +1,9 @@
 class UserSessionsController < ApplicationController
   def new; end
-  
+
   def create
     user = login(params[:email], params[:password])
-    
+
     if user
       redirect_back_or_to '/', success: 'ログインしました'
     else
@@ -12,8 +12,8 @@ class UserSessionsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     logout
-    redirect_to login_path, success: 'ログアウトしました', status: :see_other
+    redirect_to login_path, notice: 'ログアウトしました', status: :see_other
   end
 end
