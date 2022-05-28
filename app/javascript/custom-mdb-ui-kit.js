@@ -1,8 +1,8 @@
-import mdb form "mdb-ui-kit"
+import mdb from "mdb-ui-kit"
 
 const mdbInputUpdate = () => {
-  document.querySelectorAll('.from-outline').forEach((formOutline) => {
-    new.mdb.Input(fromOutline).init();
+  document.querySelectorAll('.form-outline').forEach((formOutline) => {
+    new mdb.Input(formOutline).init();
   });
 }
 
