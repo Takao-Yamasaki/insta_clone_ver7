@@ -17,7 +17,7 @@ AllCops:
     - 'bin/**/*'
     - 'spec/**/*'
     - 'config/**/*'
-    - 'lib/task/auto_anotate_models.rake'
+    - 'lib/tasks/auto_annotate_models.rake'
 Rails:
   Enabled: true
 
