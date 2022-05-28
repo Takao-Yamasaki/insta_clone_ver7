@@ -14,7 +14,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    flash[:success] = 'ログアウトしました'
-    redirect_to login_path, status: :see_other
+    redirect_to login_path, success: 'ログアウトしました', status: :see_other
   end
 end
