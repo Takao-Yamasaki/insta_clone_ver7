@@ -152,3 +152,34 @@ $ git flow feature publish 01_rubocop_and_rspec
 - 参考
 - [RSpec+capybara+selenium+chromedriverでブラウザ自動テスト！！](https://qiita.com/nakanishi03/items/c7dbb3c9528483f9a0a1)
 
+### 課題２ ログイン機能の実装
+
+- タイムゾーンの設定
+```
+# config/application.rb
+
+config.time_zone = 'Tokyo'
+config.active_record.default_timezone = :local
+```
+
+- ヘルパーが生成されないように設定
+```
+# config/application.rb
+
+config,generators do |g|
+  g.helper false
+end
+```
+
+- Gemの追加
+```
+# 認証機能
+gem 'sorcery'
+```
+
+- `bundle install`した後、以下のジェネレータを実行
+```
+$ rails g sorcery:install
+```
+
+- 
