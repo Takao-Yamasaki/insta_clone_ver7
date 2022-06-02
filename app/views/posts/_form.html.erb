@@ -1,8 +1,8 @@
-<%= form_with model: post |f| do %>
-  <% render 'shared/error_messages', object: post %>
+<%= form_with model: post do |f| %>
+  <%= render 'shared/error_messages', object: post %>
   <div class="mb-4">
-    <% f.label :body, class: 'form-label' %>
-    <% f.text_area :body, class: 'form-control' %>
+    <%= f.label :body, class: 'form-label' %>
+    <%= f.text_area :body, class: 'form-control' %>
   </div>
   <div class="mb-4">
     <% if post.new_record? %>
@@ -12,7 +12,7 @@
     <% if post.persisted? %>
       <div class="d-flex align-items-center mt-3">
         <% post.images.each do |image| %>
-          <%= image_tag :image, width: '100px' %>
+          <%= image_tag image, width: '100px' %>
         <% end %>
       </div>
     <% end %>

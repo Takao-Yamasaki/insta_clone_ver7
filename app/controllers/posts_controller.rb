@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   def index
-    @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)t
+    @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -9,9 +9,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to post_path(@post), success: '投稿しました'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -22,7 +24,7 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post), success: '投稿しました'
+      redirect_to post_path(@post), success: '投稿を更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +37,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy!
-    redirect_to posts_path, success: '投稿しました', status: :see_other
+    redirect_to posts_path, success: '投稿を削除しました', status: :see_other
   end
 
   private
