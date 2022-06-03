@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   def index
-    @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)
+    @pasy, @posts = pasy(Post.with_attached_images.includes(:user).order(created_at: :desc))
   end
 
   def new
