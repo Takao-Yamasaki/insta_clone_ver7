@@ -13,7 +13,7 @@
                           height: 40 %>
             <span class="font-weight-bold"><%= @post.user.username %></span>
           </div>
-          <%= if current_user && current_user.owner? %>
+          <% if current_user && current_user.owner?(@post) %>
             <div class="dropdown text-center">
               <a
                 class="text-reset me-3 dropdown-toggle hidden-arrow w-100 d-block"
@@ -38,7 +38,7 @@
                 </li>
               </ul>
             </div>
-          <% end %>
+        <% end %>
         </div>
       </div>
       <div class="card-body">
