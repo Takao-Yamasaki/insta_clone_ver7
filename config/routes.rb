@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'user_sessions#destroy'
 
   resources :posts do
+<<<<<<< HEAD
     resources :comments, module: :post
     resource :like, only: %i[create destroy], module: :posts
+=======
+    resources :comments, module: :posts
+>>>>>>> origin/develop
   end
 end
