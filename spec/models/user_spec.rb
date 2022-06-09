@@ -21,8 +21,8 @@ RSpec.describe User, type: :model do
   describe '#like' do
     let!(:user) { create(:user) }
     let!(:post) { create(:post) }
-    it 'いいねができること' do
-      expect { user.like(post) }.to change { like.count }.by(1)
+    it 'いいねできること' do
+      expect { user.like(post) }.to change { Like.count }.by(1)
     end
   end
 
@@ -41,11 +41,11 @@ RSpec.describe User, type: :model do
     let!(:user) { create(:user) }
     let!(:post) { create(:post) }
     let!(:not_liked_post) { create(:post) }
-    before do 
+    before do
       user.like(post)
     end
-    it 'いいねしているかどうかと判定できること' do
-      expect(user.like?(post)).to_be true
+    it 'いいねしてるかどうかを判定できること' do
+      expect(user.like?(post)).to be true
       expect(user.like?(not_liked_post)).to be false
     end
   end
