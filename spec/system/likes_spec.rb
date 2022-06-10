@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "いいね", type: :system do
-  let!(:post) { create(:post, user: user) }
+RSpec.describe 'いいね', type: :system do
+  let!(:user) { create(:user) }
   before do
     login_as(user)
   end
   describe 'いいねといいねの解除' do
     let!(:post) { create(:post, user: user) }
     it 'いいねといいねの解除ができること' do
-      visit '/visit'
+      visit '/posts'
       expect {
         within "#like_post_#{post.id}" do
           find('.btn-like').click
