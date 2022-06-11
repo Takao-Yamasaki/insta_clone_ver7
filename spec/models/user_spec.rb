@@ -92,12 +92,28 @@ RSpec.describe User, type: :model do
 
   describe '#recent' do
     let(:base_datatime) { Time.current }
-    let!(:user_a) { create(:user, created_at: base_datetime) }
-    let!(:user_b) { create(:user, created_at: base_datetime.ago(1.day)) }
-    let!(:user_c) { create(:user, created_at: base_datetime.ago(2.day)) }
-    let!(:user_d) { create(:user, created_at: base_datetime.ago(3.day)) }
+    let!(:user_a) { create(:user, created_at: base_datatime) }
+    let!(:user_b) { create(:user, created_at: base_datatime.ago(1.day)) }
+    let!(:user_c) { create(:user, created_at: base_datatime.ago(2.day)) }
+    let!(:user_d) { create(:user, created_at: base_datatime.ago(3.day)) }
     it '新しくアカウントが作られた順にユーザーを取得できる' do
       expect(User.recent(3)). to eq [user_a, user_b, user_c]
     end
+  end
+
+  describe '#feed' do
+    let!(:user_a) { create(:user) }
+    let!(:user_b) { create(:user) }
+    let!(:user_c) { create(:user) }
+    let!(:post_by_user_a) { create(:post, user: user_a) }
+    let!(:post_by_user_b) { create(:post, user: user_b) }
+    let!(:post_by_user_c) { create(:post, user: user_c) }
+    before do
+      user_a.follow(user_b)
+    end
+    subject { user_a.feed }
+    it { is_expected.to include post_by_user_a }
+    it { is_expected.to include post_by_user_b }
+    it { is_expected.not_to include post_by_user_c }
   end
 end

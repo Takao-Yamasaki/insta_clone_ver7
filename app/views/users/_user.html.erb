@@ -5,10 +5,10 @@
         class="rounded-circle"
         height="48"
         alt="Black and White Portrait of a Man"
-        loadong="lazy">
+        loading="lazy">
     <%= user.username %>
   </div>
-  <% if logged_in %>
+  <% if logged_in? %>
     <%= render 'users/relationships/follows', user: %>
   <% end %>
 </div>

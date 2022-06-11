@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to '/', success: 'ユーザー登録が完了しました。'
+      redirect_to '/', success: 'ユーザー登録が完了しました'
     else
       render :new, status: :unprocessable_entity
     end
