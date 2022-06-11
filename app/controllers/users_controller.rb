@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @pagy, @users = pagy(User.order(created_at: :desc))
+  end
+
   def new
     @user = User.new
   end
@@ -7,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to '/', success: 'ユーザー登録が完了しました。'
+      redirect_to '/', success: 'ユーザー登録が完了しました'
     else
       render :new, status: :unprocessable_entity
     end
